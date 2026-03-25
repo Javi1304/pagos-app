@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Datos de Pago</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="card">
+    <h2>Datos de Pago</h2>
+    <form id="paymentForm">
+      <label>Destinatario</label>
+      <input type="text" id="destinatario" placeholder="María Rodríguez - maria.r@email.com">
+
+      <label>Monto</label>
+      <input type="number" id="monto" placeholder="$150.00">
+
+      <label>Método de Pago</label>
+      <input type="text" id="metodo" placeholder="tarjeta de credito">
+
+      <label>Ingrese el número de cuenta</label>
+      <input type="text" id="cuenta" placeholder="XXXXXXXXXXXX">
+
+      <label>Descripción</label>
+      <textarea id="descripcion" placeholder="Pago por el almuerzo de hoy, ¡muchas gracias!"></textarea>
+
+      <button type="submit" class="btn">Enviar Pago</button>
+    </form>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
