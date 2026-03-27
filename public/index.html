@@ -2,31 +2,46 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Datos de Pago</title>
+  <title>Formulario de Pago</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card">
-    <h2>Datos de Pago</h2>
-    <form id="paymentForm">
-      <label>Destinatario</label>
-      <input type="text" id="destinatario" placeholder="María Rodríguez - maria.r@email.com">
+  <h1>Formulario de Pago</h1>
+  <form id="pagoForm">
+    <label for="destinatario">Destinatario:</label>
+    <input type="text" id="destinatario" name="destinatario" value="FRANCISCO JAVIER CEDILLO SOLARES" required>
 
-      <label>Monto</label>
-      <input type="number" id="monto" placeholder="$150.00">
+    <label for="monto">Monto:</label>
+    <input type="number" id="monto" name="monto" required>
 
-      <label>Método de Pago</label>
-      <input type="text" id="metodo" placeholder="tarjeta de credito">
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" name="descripcion" required>
 
-      <label>Ingrese el número de cuenta</label>
-      <input type="text" id="cuenta" placeholder="XXXXXXXXXXXX">
+    <label for="tipoTarjeta">Tipo de tarjeta:</label>
+    <select id="tipoTarjeta" name="tipoTarjeta" required>
+      <option value="visa">Visa</option>
+      <option value="mastercard">MasterCard</option>
+      <option value="amex">American Express</option>
+    </select>
 
-      <label>Descripción</label>
-      <textarea id="descripcion" placeholder="Pago por el almuerzo de hoy, ¡muchas gracias!"></textarea>
+    <label for="numeroTarjeta">Número de tarjeta (PAN):</label>
+    <input type="text" id="numeroTarjeta" name="numeroTarjeta" maxlength="19" required>
 
-      <button type="submit" class="btn">Enviar Pago</button>
-    </form>
-  </div>
+    <label for="fechaVencimiento">Fecha de vencimiento (MM/AA):</label>
+    <input type="text" id="fechaVencimiento" name="fechaVencimiento" placeholder="MM/AA" required>
+
+    <label for="cvv">Código de seguridad (CVV/CVC):</label>
+    <input type="text" id="cvv" name="cvv" maxlength="4" required>
+
+    <label for="nombreTitular">Nombre del titular:</label>
+    <input type="text" id="nombreTitular" name="nombreTitular" required>
+
+    <label for="documentoTitular">Documento de identidad:</label>
+    <input type="text" id="documentoTitular" name="documentoTitular" required>
+
+    <button type="submit">Enviar Pago</button>
+  </form>
+
   <script src="script.js"></script>
 </body>
 </html>

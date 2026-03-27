@@ -6,14 +6,49 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="card confirm">
-    <h2>¡Pago Enviado!</h2>
-    <p>Tu pago se ha procesado con éxito.</p>
-    <p><strong>Destinatario:</strong> María Rodríguez - maria.r@email.com</p>
-    <p><strong>Monto:</strong> $150.00</p>
-    <p><strong>Método de Pago:</strong> Tarjeta de Crédito (terminada en **5678)</p>
-    <p><strong>Descripción:</strong> Pago por el almuerzo de hoy, ¡muchas gracias!</p>
-    <p><strong>N° de Referencia:</strong> TRNS-4902-88</p>
+  <h1>Confirmación de Pago</h1>
+  <div class="container">
+    <div class="panel">
+      <h2>Datos de Pago</h2>
+      <p><strong>Destinatario:</strong> <span id="destinatario"></span></p>
+      <p><strong>Monto:</strong> $<span id="monto"></span></p>
+      <p><strong>Descripción:</strong> <span id="descripcion"></span></p>
+      <p><strong>Tipo de tarjeta:</strong> <span id="tipoTarjeta"></span></p>
+      <p><strong>Número de tarjeta:</strong> <span id="numeroTarjeta"></span></p>
+      <p><strong>Fecha de vencimiento:</strong> <span id="fechaVencimiento"></span></p>
+      <p><strong>CVV:</strong> <span id="cvv"></span></p>
+      <p><strong>Nombre del titular:</strong> <span id="nombreTitular"></span></p>
+      <p><strong>Documento de identidad:</strong> <span id="documentoTitular"></span></p>
+    </div>
+
+    <div class="panel">
+      <h2 class="success">¡Pago Enviado!</h2>
+      <p>Tu pago se ha procesado con éxito.</p>
+      <p><strong>Destinatario:</strong> <span id="destinatarioConfirm"></span></p>
+      <p><strong>Monto:</strong> $<span id="montoConfirm"></span></p>
+      <p><strong>Método de Pago:</strong> Tarjeta de Crédito (<span id="tipoTarjetaConfirm"></span>)</p>
+      <p><strong>Descripción:</strong> <span id="descripcionConfirm"></span></p>
+      <p><strong>N° de Referencia:</strong> TRNS-<span id="referencia"></span></p>
+    </div>
   </div>
+
+  <script>
+    document.getElementById("destinatario").textContent = localStorage.getItem("destinatario");
+    document.getElementById("monto").textContent = localStorage.getItem("monto");
+    document.getElementById("descripcion").textContent = localStorage.getItem("descripcion");
+    document.getElementById("tipoTarjeta").textContent = localStorage.getItem("tipoTarjeta");
+    document.getElementById("numeroTarjeta").textContent = localStorage.getItem("numeroTarjeta");
+    document.getElementById("fechaVencimiento").textContent = localStorage.getItem("fechaVencimiento");
+    document.getElementById("cvv").textContent = localStorage.getItem("cvv");
+    document.getElementById("nombreTitular").textContent = localStorage.getItem("nombreTitular");
+    document.getElementById("documentoTitular").textContent = localStorage.getItem("documentoTitular");
+
+    document.getElementById("destinatarioConfirm").textContent = localStorage.getItem("destinatario");
+    document.getElementById("montoConfirm").textContent = localStorage.getItem("monto");
+    document.getElementById("tipoTarjetaConfirm").textContent = localStorage.getItem("tipoTarjeta");
+    document.getElementById("descripcionConfirm").textContent = localStorage.getItem("descripcion");
+
+    document.getElementById("referencia").textContent = Math.floor(Math.random() * 10000);
+  </script>
 </body>
 </html>
