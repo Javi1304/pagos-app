@@ -1,7 +1,7 @@
 document.getElementById("pagoForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
-  // Capturamos los datos del formulario
+  // 1. Capturar los valores del formulario
   const destinatario = document.getElementById("destinatario").value;
   const monto = document.getElementById("monto").value;
   const descripcion = document.getElementById("descripcion").value;
@@ -12,7 +12,21 @@ document.getElementById("pagoForm").addEventListener("submit", (e) => {
   const nombreTitular = document.getElementById("nombreTitular").value;
   const documentoTitular = document.getElementById("documentoTitular").value;
 
-  // Guardamos en localStorage para que confirmacion.html los pueda leer después
+  // 2. Crear un objeto para el historial
+  const nuevoPago = {
+    destinatario: destinatario,
+    monto: monto,
+    descripcion: descripcion,
+    fecha: new Date().toLocaleString(), // Guarda fecha y hora actual
+    referencia: Math.floor(Math.random() * 1000000) // Genera un ID al azar
+  };
+
+  // 3. Guardar en el Historial General (Lista de todos los pagos)
+  let historial = JSON.parse(localStorage.getItem("historialPagos")) || [];
+  historial.push(nuevoPago);
+  localStorage.setItem("historialPagos", JSON.stringify(historial));
+
+  // 4. Guardar datos individuales (Para que confirmacion.html los lea)
   localStorage.setItem("destinatario", destinatario);
   localStorage.setItem("monto", monto);
   localStorage.setItem("descripcion", descripcion);
@@ -23,7 +37,6 @@ document.getElementById("pagoForm").addEventListener("submit", (e) => {
   localStorage.setItem("nombreTitular", nombreTitular);
   localStorage.setItem("documentoTitular", documentoTitular);
 
-  // LA SOLUCIÓN DEL PROFE: 
-  // En lugar de llamar a tu servidor, mandamos al usuario directo al link que él te dio.
+  // 5. Redirigir al link del profesor
   window.location.href = "https://mpago.la/32FJKrx";
 });

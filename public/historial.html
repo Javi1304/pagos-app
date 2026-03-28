@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Historial de Pagos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Historial de Pagos Realizados</h1>
+  <div class="panel">
+    <table id="tablaHistorial" style="width: 100%; text-align: left; border-collapse: collapse;">
+      <thead>
+        <tr style="border-bottom: 2px solid #ccc;">
+          <th>Fecha</th>
+          <th>Destinatario</th>
+          <th>Monto</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody id="cuerpoTabla">
+        </tbody>
+    </table>
+    <br>
+    <a href="index.html">Volver al Formulario</a>
+  </div>
+
+  <script>
+    const pagos = JSON.parse(localStorage.getItem("historialPagos")) || [];
+    const tabla = document.getElementById("cuerpoTabla");
+
+    pagos.reverse().forEach(pago => {
+      const fila = `<tr>
+        <td>${pago.fecha}</td>
+        <td>${pago.destinatario}</td>
+        <td>$${pago.monto}</td>
+        <td style="color: green; font-weight: bold;">Exitoso</td>
+      </tr>`;
+      tabla.innerHTML += fila;
+    });
+  </script>
+</body>
+</html>
