@@ -1,10 +1,10 @@
-document.getElementById("pagoForm").addEventListener("submit", async (e) => {
+document.getElementById("pagoForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
+  // Capturamos los datos del formulario
   const destinatario = document.getElementById("destinatario").value;
   const monto = document.getElementById("monto").value;
   const descripcion = document.getElementById("descripcion").value;
-
   const tipoTarjeta = document.getElementById("tipoTarjeta").value;
   const numeroTarjeta = document.getElementById("numeroTarjeta").value;
   const fechaVencimiento = document.getElementById("fechaVencimiento").value;
@@ -12,7 +12,7 @@ document.getElementById("pagoForm").addEventListener("submit", async (e) => {
   const nombreTitular = document.getElementById("nombreTitular").value;
   const documentoTitular = document.getElementById("documentoTitular").value;
 
-  // Guardar datos en localStorage
+  // Guardamos en localStorage para que confirmacion.html los pueda leer después
   localStorage.setItem("destinatario", destinatario);
   localStorage.setItem("monto", monto);
   localStorage.setItem("descripcion", descripcion);
@@ -23,33 +23,7 @@ document.getElementById("pagoForm").addEventListener("submit", async (e) => {
   localStorage.setItem("nombreTitular", nombreTitular);
   localStorage.setItem("documentoTitular", documentoTitular);
 
-  try {
-    const response = await fetch("/create_preference", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        destinatario,
-        monto,
-        descripcion,
-        tipoTarjeta,
-        numeroTarjeta,
-        fechaVencimiento,
-        cvv,
-        nombreTitular,
-        documentoTitular
-      })
-    });
-
-    const data = await response.json();
-    console.log("Respuesta del backend:", data);
-
-    if (data.init_point) {
-      window.location.href = data.init_point;
-    } else {
-      alert("Error al iniciar el pago: no se recibió init_point");
-    }
-  } catch (error) {
-    console.error("Error en el frontend:", error);
-    alert("Error al iniciar el pago");
-  }
+  // LA SOLUCIÓN DEL PROFE: 
+  // En lugar de llamar a tu servidor, mandamos al usuario directo al link que él te dio.
+  window.location.href = "https://mpago.la/32FJKrx";
 });

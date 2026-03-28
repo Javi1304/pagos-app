@@ -10,7 +10,7 @@ app.use(express.static('public')); // Esto sirve tus archivos de la carpeta publ
 
 // CONFIGURACIÓN CON TU TOKEN DE PRUEBA
 const client = new MercadoPagoConfig({
-  accessToken: 'APP_USR-7756137479060799-032703-6d8ae147323e3b11b251e9a7877cd402-3296984244'
+  accessToken: 'TEST-3443141972996989-032419-8f5c2b4a469e5a06600fd04a6839d4f6-2653101234'
 });
 
 app.post('/create_preference', async (req, res) => {
